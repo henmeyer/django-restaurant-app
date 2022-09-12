@@ -1,0 +1,28 @@
+{% extends 'restaurant/base.html' %}
+{% load static %}
+
+{% block title %}Ingredients | List{% endblock title %}
+
+{% block header %}
+    <link rel="stylesheet" href={% static 'restaurant/lists.css' %}>
+{% endblock header %}
+
+{% block content %}
+    <h1>Ingredients</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Stock</th>
+            <th>Unit</th>
+            <th>Price</th>
+        </tr>
+        {% for ingredient in object_list %}
+        <tr>
+            <td>{{ ingredient.name }}</td>
+            <td>{{ ingredient.stock }}</td>
+            <td>{{ ingredient.unit }}</td>
+            <td>{{ ingredient.unit_price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}

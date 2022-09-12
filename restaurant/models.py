@@ -2,7 +2,7 @@
 from django.db import models
 
 
-class Ingredients(models.Model):
+class Ingredient(models.Model):
     """ Ingredients """
     UNITY = 'UN'
     KILOGRAM = 'KG'
@@ -20,7 +20,7 @@ class Ingredients(models.Model):
 
     def __str__(self):
         return f"{self.name}: quantity = {self.stock}{self.unit}, \
-            price per unit = {self.unit_price}"
+        price per unit = {self.unit_price}"
 
 
 class MenuItem(models.Model):
@@ -35,7 +35,7 @@ class MenuItem(models.Model):
 class RecipeRequirement(models.Model):
     """ RecipeRequirement """
     menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
-    ingredient = models.ForeignKey(Ingredients, on_delete=models.CASCADE)
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
 class Purchase(models.Model):
