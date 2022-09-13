@@ -1,5 +1,6 @@
 """Importing models from django.db"""
 from django.db import models
+from django.urls import reverse
 
 
 class Ingredient(models.Model):
@@ -22,6 +23,9 @@ class Ingredient(models.Model):
         return f"{self.name}: quantity = {self.stock}{self.unit}, \
         price per unit = {self.unit_price}"
 
+    def get_absolute_url(self):
+        return reverse('ingredients_list')
+
 
 class MenuItem(models.Model):
     """ MenuItem """
@@ -31,6 +35,9 @@ class MenuItem(models.Model):
     def __str__(self):
         return f"{self.name}: price {self.price}"
 
+    def get_absolute_url(self):
+        return reverse('menuitems_list')
+
 
 class RecipeRequirement(models.Model):
     """ RecipeRequirement """
@@ -38,7 +45,22 @@ class RecipeRequirement(models.Model):
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
+    def __str__(self):
+        return f"{self.ingredient.name} from {self.menu_item.name}"
+
+    def get_absolute_url(self):
+        return reverse('menuitems_list')
+
 class Purchase(models.Model):
     """ Purchase """
     menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["timestamp"]
+
+    def __str__(self):
+        return f"{self.menu_item.name} at {self.timestamp}"
+
+    def get_absolute_url(self):
+        return reverse('purchases_list')

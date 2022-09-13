@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Purchase | List{% endblock title %}
+
+{% block header %}
+    <link rel="stylesheet" href={% static 'restaurant/style.css' %}>
+{% endblock header %}
+
+{% block content %}
+    <h1>Purchase</h1>
+    <a href={% url 'purchase_create' %}>Add Purchase</a>
+    <table>
+        <tr>
+            <th>Menu Item</th>
+            <th>Price</th>
+            <th>Date</th>
+        </tr>
+        {% for purchase in object_list %}
+        <tr>
+            <td>{{ purchase.menu_item.name }}</td>
+            <td>{{ purchase.menu_item.price }}</td>
+            <td>{{ purchase.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}

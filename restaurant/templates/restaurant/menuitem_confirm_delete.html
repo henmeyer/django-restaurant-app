@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Menu Item | Delete{% endblock title %}
+
+{% block header %}
+    <link rel="stylesheet" href={% static 'restaurant/style.css' %}>
+{% endblock header %}
+
+{% block content %}
+    <h1>Menu Item</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ object }}"?</p>
+        <input type="submit" value="Confirm">
+    </form>
+{% endblock content %}

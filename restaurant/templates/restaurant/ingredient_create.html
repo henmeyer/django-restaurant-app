@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ingredients | Create{% endblock title %}
+
+{% block header %}
+    <link rel="stylesheet" href={% static 'restaurant/style.css' %}>
+{% endblock header %}
+
+{% block content %}
+    <h1>Ingredients</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Create Ingredient"/>
+    </form>
+{% endblock content %}

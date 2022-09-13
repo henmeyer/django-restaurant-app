@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant {% block title %}{% endblock  %}</title>
+    {% block header %}{% endblock  %}
+</head>
+<body>
+    <h1>Restaurant</h1>
+    <ul id="home-links-list">
+        <li class="home-links">
+            <a href={% url 'index' %}>Home</a>
+        </li>
+        <li class="home-links">
+            <a href={% url 'ingredients_list' %}>Ingredients</a>
+        </li>
+        <li class="home-links">
+            <a href={% url 'menuitems_list' %}>Menu</a>
+        </li>
+        <li class="home-links">
+            <a href={% url 'purchases_list' %}>Purchases</a>
+        </li>
+    </ul>
+    {% block content %}{% endblock  %}
+</body>
+</html>

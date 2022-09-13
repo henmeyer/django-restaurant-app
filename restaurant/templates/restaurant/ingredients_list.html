@@ -1,20 +1,22 @@
-{% extends 'restaurant/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title %}Ingredients | List{% endblock title %}
 
 {% block header %}
-    <link rel="stylesheet" href={% static 'restaurant/lists.css' %}>
+    <link rel="stylesheet" href={% static 'restaurant/style.css' %}>
 {% endblock header %}
 
 {% block content %}
     <h1>Ingredients</h1>
+    <a href={% url 'ingredient_create' %}>Add Ingredient</a>
     <table>
         <tr>
             <th>Name</th>
             <th>Stock</th>
             <th>Unit</th>
             <th>Price</th>
+            <th>Actions</th>
         </tr>
         {% for ingredient in object_list %}
         <tr>
@@ -22,6 +24,10 @@
             <td>{{ ingredient.stock }}</td>
             <td>{{ ingredient.unit }}</td>
             <td>{{ ingredient.unit_price }}</td>
+            <td>
+                <a href={% url 'ingredient_update' ingredient.id %}>Edit</a>
+                <a href={% url 'ingredient_delete' ingredient.id %}>Delete</a>
+            </td>
         </tr>
         {% endfor %}
     </table>

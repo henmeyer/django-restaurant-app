@@ -1,0 +1,45 @@
+body {
+    background: lightgrey;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+table, td, th {
+    border: 1px solid;
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+}
+
+#home-links-list {
+    display: flex;
+    padding: 0;
+}
+
+.home-links {
+    list-style: none;
+    padding: 10px 10px 10px 0px;
+}
+
+li.home-links a {
+    background-color: rgba(0, 110, 255, 0.993);
+    border: 1px inherit solid;
+    border-radius: 10px;
+    overflow: hidden;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    transition: padding 1s;
+}
+
+li.home-links a:hover{
+    background-color: rgb(94, 207, 245);
+    color: black;
+    padding: 20px;
+    font-size: large;
+}

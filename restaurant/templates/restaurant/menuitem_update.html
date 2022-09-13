@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Menu Item | Edit{% endblock title %}
+
+{% block header %}
+    <link rel="stylesheet" href={% static 'restaurant/style.css' %}>
+{% endblock header %}
+
+{% block content %}
+    <h1>Menu Item</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Update Ingredient"/>
+    </form>
+{% endblock content %}
